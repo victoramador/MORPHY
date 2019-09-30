@@ -43,6 +43,7 @@ public class MyGameManager : MonoBehaviour {
         if (lives < 1)
         {
             SceneManager.LoadScene("GameOver");
+            Cursor.visible = true;
         }
         else
         {
@@ -70,8 +71,8 @@ public class MyGameManager : MonoBehaviour {
             seg = 0;
         }
         minText.text = min.ToString();
-        //MyGameSettings.getInstance().minfinal=min;
-        //MyGameSettings.getInstance().segfinal=seg;
+        MyGameSettings.getInstance().minfinal=min;
+        MyGameSettings.getInstance().segfinal=seg;
 
     }
 	public void Pausa(){

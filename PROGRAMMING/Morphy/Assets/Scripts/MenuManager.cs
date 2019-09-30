@@ -7,17 +7,16 @@ public class MenuManager : MonoBehaviour {
 
 	public void PlayGame()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("Nivel_1");
         //Time.timeScale = 0;
     }
     public void EndGame()
     {
-
         Application.Quit();
     }
     public void Controles()
     {
-        SceneManager.LoadScene("Controls");
+        //SceneManager.LoadScene("Controls");
     }
     public void Creditos()
     {
