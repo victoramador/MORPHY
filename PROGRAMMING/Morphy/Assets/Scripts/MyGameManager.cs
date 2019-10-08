@@ -14,6 +14,8 @@ public class MyGameManager : MonoBehaviour {
     public bool firstTime = false;
     public Text livesText;
 	public int lives;
+    public int hits;
+    public bool vacio = true;
 	public GameObject pausaMenu;
 	public bool pause=true;
     private static MyGameManager instance;
@@ -32,6 +34,7 @@ public class MyGameManager : MonoBehaviour {
 	void Start () {
         Cursor.visible = false;
         lives = 3;
+        hits = 3;
 		livesText.text="x "+lives.ToString();
     }
 	
@@ -40,17 +43,32 @@ public class MyGameManager : MonoBehaviour {
         Addtime();
     }
 	public void Loselife (){
+
+        if (vacio == false)
+        {
+            lives--;
+            hits = 3;
+            vacio = true;
+        }
+        else
+        {
+            if (hits > 1)
+            {
+                hits--;
+            }
+            else if (hits <= 1)
+            {
+                lives--;
+                hits = 3;
+            }
+        }
+        livesText.text = "x " + lives.ToString();
         if (lives < 1)
         {
             SceneManager.LoadScene("GameOver");
             Cursor.visible = true;
         }
-        else
-        {
-            lives--;
-            livesText.text = "x " + lives.ToString();
-        }
-	}
+    }
     public void Winlife()
     {
            lives++;

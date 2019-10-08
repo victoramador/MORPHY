@@ -13,6 +13,8 @@ sistema de vidas:
 
 3 vidas y 3 golpes para morir
 
+golpes:una gelatina que se van comiendo 
+
 gelatina para curarse los golpes
 
 si te caes al vacio pierdes 1 vida

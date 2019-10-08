@@ -172,6 +172,7 @@ public class ControladorPersonaje : MonoBehaviour
     void Alive()
     {
         transform.position = iniPos;
+        MyGameManager.getInstance().vacio = false;
         MyGameManager.getInstance().Loselife();
         muerto = false;
         //Invoke("Vivo", 0.05f);
