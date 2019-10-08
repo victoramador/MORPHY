@@ -1,5 +1,6 @@
 
-absorver enemigos con posible cambio estetico
+absorber enemigos con posible cambio estetico
+(numero de usos de la habilidad o tiempo)
 
 ataque que mate de 1 golpe (de momento)
 
@@ -7,7 +8,7 @@ que se deshaga para pasar por diferentes sitios
 
 acciones Morphy:
 
-atacar,deshacerse,saltar
+atacar,deshacerse,saltar,absorber
 
 sistema de vidas:
 
