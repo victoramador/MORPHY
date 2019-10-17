@@ -13,7 +13,7 @@ public class Caja : MonoBehaviour {
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && player.isattacking==true)
+        if (collision.gameObject.tag == "Player" && player.isattacking==false)
         {
             Destroy();
         }
@@ -21,11 +21,11 @@ public class Caja : MonoBehaviour {
     private void Destroy()
     {
         col.enabled = false;
-        caja.gameObject.SetActive(false);
+        Destroy(caja.gameObject);
     }
-    private void Reset()
+    /*private void Reset()
     {
         col.enabled = true;
         caja.gameObject.SetActive(true);
-    }
+    }*/
 }

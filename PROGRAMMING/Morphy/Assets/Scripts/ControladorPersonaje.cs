@@ -16,7 +16,7 @@ public class ControladorPersonaje : MonoBehaviour
     public bool isrunning = false;
     public bool issliding=false;
     public bool isattacking = false;
-    //public Collider2D coldeslizarse;
+    public Collider2D coldeslizarse;
     public Collider2D colnormal;
     public AudioSource salto;
     public AudioSource muerte;
@@ -30,11 +30,11 @@ public class ControladorPersonaje : MonoBehaviour
     }
     void Start()
     {
-        iniPos.x = -28;
+        iniPos.x = 0;
         iniPos.y = -4;
         //iniPos = transform.position;
         transform.position = iniPos;
-        //coldeslizarse.gameObject.SetActive(false);
+        coldeslizarse.gameObject.SetActive(false);
     }
 
     // Use this for initialization
@@ -71,11 +71,20 @@ public class ControladorPersonaje : MonoBehaviour
             onAir = false;
             //animator.SetBool("Jump", false);
         }
-       
         if (collision.gameObject.tag == "GameOver")
         {
             //muerte.Play();
             Invoke("Alive", 0.2f);
+        }
+        if (collision.gameObject.tag == "Life")
+        {
+            //muerte.Play();
+            MyGameManager.getInstance().Winlife();
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //muerte.Play();
+            Invoke("Alive2", 0.2f);
         }
         if (collision.gameObject.tag == "Finish")
         {
@@ -147,16 +156,17 @@ public class ControladorPersonaje : MonoBehaviour
                 {
                     //animator.SetBool("Attacking", true);
                     isattacking = true;
+
                     //ataque.Play();
                     Invoke("Attack", 0.8f);
 
                 }
-                if (Input.GetButtonDown("Fire2") && enSuelo == true && isrunning == true)
+                if (Input.GetButtonDown("Fire2") && enSuelo == true)
                 {
                     issliding = true;
                     //deslizarse.Play();
                     colnormal.gameObject.SetActive(false);
-                    //coldeslizarse.gameObject.SetActive(true);
+                    coldeslizarse.gameObject.SetActive(true);
                     Invoke("Slide", 4);
                 }
 
@@ -167,12 +177,23 @@ public class ControladorPersonaje : MonoBehaviour
     {
         issliding = false;
         colnormal.gameObject.SetActive(true);
-        //coldeslizarse.gameObject.SetActive(false);
+        coldeslizarse.gameObject.SetActive(false);
     }
     void Alive()
     {
         transform.position = iniPos;
         MyGameManager.getInstance().vacio = false;
+        MyGameManager.getInstance().Loselife();
+        muerto = false;
+        //Invoke("Vivo", 0.05f);
+    }
+    void Alive2()
+    {
+        if ( MyGameManager.getInstance().hits <= 1)
+        {
+            transform.position = iniPos;
+            MyGameManager.getInstance().gelatina.color = Color.green;
+        }
         MyGameManager.getInstance().Loselife();
         muerto = false;
         //Invoke("Vivo", 0.05f);

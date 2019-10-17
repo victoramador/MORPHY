@@ -4,7 +4,7 @@ absorber enemigos con posible cambio estetico
 
 ataque que mate de 1 golpe (de momento)
 
-que se deshaga para pasar por diferentes sitios
+que se deshaga para pasar por diferentes sitios +
 
 acciones Morphy:
 
@@ -12,13 +12,15 @@ atacar,deshacerse,saltar,absorber
 
 sistema de vidas:
 
-3 vidas y 3 golpes para morir
+3 vidas y 3 golpes para morir +
 
-golpes:una gelatina que se van comiendo 
+golpes:una gelatina que se van comiendo y va cambiando de color (faltan sprites) 
 
-gelatina para curarse los golpes
+gelatina para curarse los golpes +
 
-si te caes al vacio pierdes 1 vida
+si te caes al vacio pierdes 1 vida +
+
+si te golpea un enemigo pierdes 1 golpe +
 
 Nivel 1:
 

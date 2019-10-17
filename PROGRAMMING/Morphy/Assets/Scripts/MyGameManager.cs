@@ -15,6 +15,7 @@ public class MyGameManager : MonoBehaviour {
     public Text livesText;
 	public int lives;
     public int hits;
+    public Image gelatina;
     public bool vacio = true;
 	public GameObject pausaMenu;
 	public bool pause=true;
@@ -33,6 +34,7 @@ public class MyGameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Cursor.visible = false;
+        gelatina.color = Color.green;
         lives = 3;
         hits = 3;
 		livesText.text="x "+lives.ToString();
@@ -41,6 +43,10 @@ public class MyGameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Addtime();
+        if (hits == 3)
+        {
+            gelatina.color = Color.green;
+        }
     }
 	public void Loselife (){
 
@@ -55,6 +61,14 @@ public class MyGameManager : MonoBehaviour {
             if (hits > 1)
             {
                 hits--;
+                if (hits == 2)
+                {
+                    gelatina.color = Color.yellow;
+                }
+                if (hits == 1)
+                {
+                    gelatina.color = Color.red;
+                }
             }
             else if (hits <= 1)
             {
@@ -71,9 +85,23 @@ public class MyGameManager : MonoBehaviour {
     }
     public void Winlife()
     {
-           lives++;
-           livesText.text = "x " + lives.ToString();
-        
+        if (hits < 3)
+        {
+            hits++;
+            if (hits == 3)
+            {
+                gelatina.color = Color.green;
+            }
+            if (hits == 2)
+            {
+                gelatina.color = Color.yellow;
+            }
+            if (hits == 1)
+            {
+                gelatina.color = Color.red;
+            }
+        }
+          
     }
 	public void Addtime(){
         mseg ++ ;
