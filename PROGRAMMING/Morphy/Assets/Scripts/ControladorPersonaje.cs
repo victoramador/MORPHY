@@ -81,10 +81,16 @@ public class ControladorPersonaje : MonoBehaviour
             //muerte.Play();
             MyGameManager.getInstance().Winlife();
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && isattacking==false)
         {
             //muerte.Play();
             Invoke("Alive2", 0.2f);
+        }
+        if (collision.gameObject.tag == "Enemy" && isattacking == true)
+        {
+            //muerte.Play();
+            collision.gameObject.GetComponent<EnemyManager>().LoseLife();
+            Invoke("Attack", 0.2f);
         }
         if (collision.gameObject.tag == "Finish")
         {
@@ -156,7 +162,6 @@ public class ControladorPersonaje : MonoBehaviour
                 {
                     //animator.SetBool("Attacking", true);
                     isattacking = true;
-
                     //ataque.Play();
                     Invoke("Attack", 0.8f);
 
@@ -198,9 +203,11 @@ public class ControladorPersonaje : MonoBehaviour
         muerto = false;
         //Invoke("Vivo", 0.05f);
     }
+
     void Attack()
     {
         isattacking = false;
+        
         //animator.SetBool("Attacking", false);
     }
     void Vivo()
